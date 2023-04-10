@@ -1,0 +1,45 @@
+#player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgray;
+    width: max-content;
+    padding: 2vw;
+    border-radius: 2vw;
+}
+
+
+#playerName{
+    font-size: 4vw;
+
+}
+#imgChoice{
+    width: 20vw;
+}
+#pont{
+    
+}
+
+
+@media screen and (max-width: 720px)  {
+    #player{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: lightgray;
+        width: max-content;
+        padding: 2vw;
+        border-radius: 2vw;
+    }
+    #playerName{
+        font-size: 6vw;
+    
+    }
+    #imgChoice{
+        width: 50vw;
+    }
+    #pont{
+        
+    }
+    
+}
