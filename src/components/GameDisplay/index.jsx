@@ -6,79 +6,75 @@ import interroga from "../../assets/interroga.png"
 import * as S from "./style"
 import Player from "../Player"
 import Choice from "../Choice"
+import SelectPlayer from "../SelectPlayer"
 export default function GameDisplay() {
-
-  const [player, setPlayer] = useState('')
+  const [start,setStart]=useState(false);
+  
   const [choiceP, setChoiceP] = useState(undefined)
   const [choiceC, setChoiceC] = useState(undefined)
-  const [winner, setWinner] = useState(undefined)
-
-  //atualiza nome 
-  function updateName(e) {
-    setPlayer(e.target.value)
-  }
+  const [playerName, setPlayerName] = useState('')
+  const [winner,setWinner]=useState(undefined)  
+  
   //opções
   const optionChoices = [
     { name: "pedra", image: pedra },
     { name: "papel", image: papel },
     { name: "tesoura", image: tesoura },
   ]
+  choiceP&&choiceC&&console.log(choiceWinner(choiceP, choiceC));
+  
   //escolhe pc
   function selectChoieC() {
     let i = 0
     const repet = setInterval(() => {
       const select = Math.floor(Math.random() * 3);
-      console.log(select);
       setChoiceC(optionChoices[select])
       i++;
-      if (i > 10) {
-        clearInterval(repet)
+      if (i > 5) {
+        if (!winner&&choiceC && choiceP){
+          setWinner(choiceWinner(choiceP,choiceC));
+        }
+        clearInterval(repet);
       }
-    }, 200);
-
-    if (choiceC && choiceP) {
-      l
-      choiceWinner(choiceP, choiceC);
-    }
+    }, 250);
   };
 
   function choiceWinner(choiceP, choiceC) {
-
     if (choiceC.name === choiceP.name) {
-      setWinner(undefined);
+      return"empate";
     } else if (choiceP.name === "pedra") {
       if (choiceC.name === "papel") {
-        setWinner("computer");
+        return"computer";
       } else {
-        setWinner("Player");
+        return"Player";
       }
     } else if (choiceP.name === "papel") {
       if (choiceC.name === "tesoura") {
-        setWinner("computer");
+        return"computer";
       } else {
-        setWinner("Player");
+        return"Player";
       }
     } else if (choiceP.name === "tesoura") {
       if (choiceC.name === "pedra") {
-        setWinner("computer");
+        return"computer";
       } else {
-        setWinner("Player");
+        return"Player";
       }
     }
-    console.log(winner);
   }
   return (
     <S.Container>
-      <S.NameGame>Jokenpô</S.NameGame>
-      <S.LabelPlayer htmlFor="player">Nome do jogador:</S.LabelPlayer>
-      <S.InputPlayer maxLength={10} id="player" value={player} onChange={updateName} />
-      <S.ButtonStart>Iniciar Partida</S.ButtonStart>
+      <S.NameGame>Jokenpô</S.NameGame>  
+      {!start&&
+      <SelectPlayer playerName={playerName} setPlayerName={setPlayerName} setStart={setStart}/>
+      }
+      {start&&
       <S.ContainerPlayers>
-        <Player playeName={player} imgChoice={choiceP ? choiceP.image : interroga} />
+        <Player playerName={playerName} imgChoice={choiceP ? choiceP.image : interroga} />
         {!choiceP && <Choice optionChoices={optionChoices} setChoiceP={setChoiceP} />}
         {choiceP && <S.ButtonGo onClick={selectChoieC}>Jokenpo!</S.ButtonGo>}
         <Player playeName={"Computer"} imgChoice={choiceC ? choiceC.image : interroga} />
-      </S.ContainerPlayers>
+      </S.ContainerPlayers>}
     </S.Container>
   )
 }

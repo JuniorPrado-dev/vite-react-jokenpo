@@ -13,25 +13,7 @@ export const NameGame = styled.h1`
     color: crimson;
     font-size: 6vw;
     `;
-export const LabelPlayer = styled.label`
-        text-transform: capitalize;
-        font-size: 2.5vw;
-        `;
-export const InputPlayer = styled.input`
-        width:15%;
-        text-align: center;
-        padding:0 1vw ;
-        margin: 1vw 0;
-        font-size: 2.5vw;
-        border-radius: 1vw;
-    `;
-export const ButtonStart = styled.button`
-        font-size: 2.5vw;
-        padding: 1vw;
-        border-radius: 1vw;
-        background-color: purple;
-        color: white;
-        `;
+
 
 export const ContainerPlayers = styled.div`
     width: 90%;
@@ -47,5 +29,5 @@ export const ButtonGo = styled.button`
         border-radius: 1vw;
         background-color:orangered;
         color: white;
-        
+        text-transform:uppercase;
         `;
