@@ -8,6 +8,7 @@ export default function Choice({ optionChoices, setChoiceP }) {
   return (
 
     <S.Container>
+      <S.Title>Faça sua escolha!</S.Title>
       <S.ContainerChoice>
         <S.ImageChoice onClick={() => setChoiceP(optionChoices[0])} src={pedra} />
         <S.ImageChoice onClick={() => setChoiceP(optionChoices[1])} src={papel} />

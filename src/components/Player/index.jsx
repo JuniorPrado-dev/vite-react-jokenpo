@@ -1,8 +1,7 @@
 import { useState } from "react"
 //import "./index.css"
 import * as S from "./style"
-export default function Player({playerName,imgChoice}){
-  const [pont,setPont]=useState(0)  
+export default function Player({playerName,imgChoice,pont}){
   return (
       <S.Container id="player">
         <S.Name id="playerName">{playerName}</S.Name>

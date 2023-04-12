@@ -9,7 +9,7 @@ export default function SelectPlayer({playerName, setPlayerName,setStart }) {
 
   return (
     <S.Container id="player">
-      <S.LabelPlayer htmlFor="player">Nome do jogador:</S.LabelPlayer>
+      <S.LabelPlayer htmlFor="player">Nome do jogador</S.LabelPlayer>
       <S.InputPlayer maxLength={10} id="player" value={playerName} onChange={updateName} />
       {playerName&&
         <S.ButtonStart onClick={()=>{setStart(true)}} >Iniciar Partida</S.ButtonStart>}
